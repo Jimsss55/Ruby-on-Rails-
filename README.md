@@ -3,6 +3,10 @@
 Resources 
 - Users - Create user table and model
         - Add validations
+        - Username must be present and unique (Min-3, Max-25)
+        - Email address must be present and unique (Max-105)
+        - email must be valid email format, check with email regex
+
 Associations
 - One-to-many(Between users and articles)
 
