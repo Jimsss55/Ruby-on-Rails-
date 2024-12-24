@@ -1,5 +1,5 @@
 <p style="color: green"><%= notice %></p>
-
+by <%= @article.user.name if @article.user %>
 <%= render @article %>
 
 <div>
