@@ -1,12 +1,35 @@
-<div id="<%= dom_id article %>">
-  <p>
-    <strong>Name:</strong>
-    <%= article.name %>
-  </p>
+<p style="color: green"><%= notice %></p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= article.description %>
-  </p>
+<% content_for :title, "Articles" %>
 
+<h1>Articles</h1>
+
+<div id="articles">
+  <% if @articles.present? %>
+    <% @articles.each do |article| %>
+      by <%= article.user.name if article.user %>
+      <div id="<%= dom_id article %>">
+        <p>
+          <strong>Name:</strong>
+          <%= article.name %>
+          </p><p>
+          <strong>Description:</strong>
+          <%= article.description %>
+        </p>
+      </div>
+
+      <%= link_to "View",article_path(article) %>
+      <%= link_to "Edit",article_path(article) %>
+      <%= link_to "Delete",article_path(article), method: :delete, data: {confirm: "Are you sure?"} %>
+
+      <div>
+        <small>Created <%= time_ago_in_words(article.created_at) %> ago,
+          edited <%= time_ago_in_words(article.updated_at) %> ago</small>
+        <p></p>
+        <p></p>
+      </div>
+    <% end %>
+  <%end %>
 </div>
+
+<%= link_to "New article", new_article_path %>

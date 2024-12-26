@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+<h1><%= @user.name %>'s Profile</h1>
+<%= render "articles/article"%>
+
+<div>
+  <% @articles.each do |article| %>
+    by <%= article.user.name if article.user %>
+    <div id="<%= dom_id article %>">
+      <p>
+        <strong>Name:</strong>
+        <%= article.name %>
+      </p><p>
+      <strong>Description:</strong>
+      <%= article.description %>
+    </p>
+    </div>
+
+    <%= link_to "View",article_path(article) %>
+    <%= link_to "Edit",article_path(article) %>
+    <%= link_to "Delete",article_path(article), method: :delete, data: {confirm: "Are you sure?"} %>
+
+    <div>
+      <small>Created <%= time_ago_in_words(article.created_at) %> ago,
+        edited <%= time_ago_in_words(article.updated_at) %> ago</small>
+      <p></p>
+      <p></p>
+    </div>
+  <% end %>
+</div>

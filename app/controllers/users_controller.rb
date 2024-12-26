@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find(params[:id])
+    @articles = @user.articles
+  end
+
   def create
     @user = User.new(user_params)
 
@@ -16,6 +21,10 @@ class UsersController < ApplicationController
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def index
+    @users = User.all
   end
 
   def edit
