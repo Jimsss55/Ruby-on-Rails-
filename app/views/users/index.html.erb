@@ -1,5 +1,9 @@
 <h1>Users</h1>
 
+<div class="apple_pagination">
+  <%= will_paginate @users, :container => false %>
+</div>
+
 <div>
   <% @users.each do |user| %>
     <%= link_to user.name, user %>

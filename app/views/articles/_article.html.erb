@@ -7,7 +7,10 @@
 <div id="articles">
   <% if @articles.present? %>
     <% @articles.each do |article| %>
-      by <%= article.user.name if article.user %>
+
+      <% if article.user %>
+        by <%= link_to article.user.name, user_path(article.user)%>
+      <% end %>
       <div id="<%= dom_id article %>">
         <p>
           <strong>Name:</strong>

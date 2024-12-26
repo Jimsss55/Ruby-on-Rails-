@@ -1,3 +1,8 @@
 <h1>Listing all Articles</h1>
+
+<div class="apple_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+
 <%= render 'article' %>
 <%#= link_to "New article", new_article_path %>

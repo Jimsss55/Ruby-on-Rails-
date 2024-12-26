@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page], per_page: 3)
   end
 
   def edit
@@ -36,8 +36,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params)
-        format.html {redirect_to articles_path, notice: "Your Account information was Successfully updated"}
-        format.json {render :show, status: :ok, location: @article}
+        format.html { redirect_to users_path, notice: "Your Account information, Successfully updated" }
 
       else
         format.html { render :edit, status: :unprocessable_entity }

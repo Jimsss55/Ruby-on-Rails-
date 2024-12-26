@@ -28,6 +28,7 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 gem "byebug"
+gem 'will_paginate', '~> 4.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
