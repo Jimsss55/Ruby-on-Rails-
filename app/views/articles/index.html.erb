@@ -5,4 +5,7 @@
 </div>
 
 <%= render 'article' %>
-<%#= link_to "New article", new_article_path %>
+<div class="apple_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+

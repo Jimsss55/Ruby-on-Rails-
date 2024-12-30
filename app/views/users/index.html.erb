@@ -11,7 +11,10 @@
     <div>
       <h5><%= pluralize(user.articles.count, "article") %></h5>
       <%= link_to "View Profile",user %>
-      <%= link_to "Edit Profile",edit_user_path(user) %>
+
+      <% if logged_in? && user == current_user %>
+        <%= link_to "Edit Profile",edit_user_path(user) %>
+      <%end %>
     </div>
 
     <div>
