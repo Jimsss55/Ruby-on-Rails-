@@ -72,7 +72,7 @@ class ArticlesController < ApplicationController
       params.expect(article: [ :name, :description ])
     end
     def require_same_user
-      if current_user != @article.user
+      if current_user != @article.user && !current_user.admin?
         flash[:notice] = "You can only edit and delete your own article"
         redirect_to @article
       end
