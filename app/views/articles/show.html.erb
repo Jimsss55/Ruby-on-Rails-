@@ -1,10 +1,24 @@
-<p style="color: green"><%= flash %></p>
-by <%= @article.user.name if @article.user %>
-<%= render @article %>
+<div style="justify-content: center">
+  <div style="margin-top: 4rem">
+    <div style="text-align: center; margin-bottom: 2rem; background-color: greenyellow">
+      <div style="font-style: italic ; font-weight: 600">
+        by <%= @article.user.name if @article.user %>
+        <br>
+        <% if @article.categories.any? %>
+          <div style="margin-top: 2rem">
+            <%= render @article.categories %>
+          </div>
+        <% end %>
+        <%= render @article %>
+      </div>
 
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
+      <div>
+        <%= link_to "Edit this article", edit_article_path(@article) %> |
+        <%= link_to "Back to articles", articles_path %>
 
-  <%= button_to "Destroy this article", @article, method: :delete, data: {confirm: "Are you sure you want to delete?"} %>
+        <%= button_to "Destroy this article", @article, method: :delete, data: {confirm: "Are you sure you want to delete?"} %>
+      </div>
+    </div>
+  </div>
 </div>
+

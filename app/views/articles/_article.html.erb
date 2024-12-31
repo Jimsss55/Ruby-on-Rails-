@@ -7,6 +7,11 @@
       <% if article.user %>
         by <%= link_to article.user.name, user_path(article.user)%>
       <% end %>
+      <% if article.categories.any? %>
+        <div style="margin-top: 2rem">
+          <%= render article.categories %>
+        </div>
+      <% end %>
       <div id="<%= dom_id article %>">
         <p>
           <strong>Name:</strong>
