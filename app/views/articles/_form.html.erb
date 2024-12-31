@@ -11,17 +11,22 @@
     </div>
   <% end %>
 
-  <div>
+  <div style="text-align: center">
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
+  <div style="text-align: center">
+    <%= form.label :description, style: "display: block"%>
     <%= form.textarea :description %>
   </div>
 
-  <div>
+  <div style="text-align: center">
+    <%= form.label :category %>
+    <%= form.collection_select(:category_ids, Category.all, :id, :name, {prompt: "Make your selection from the list below (can be empty)"}, {multiple: true}) %>
+  </div>
+
+  <div style="text-align: center">
     <%= form.submit %>
   </div>
 <% end %>
