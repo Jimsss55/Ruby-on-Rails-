@@ -1,1 +1,17 @@
 <h1 style="text-align: center">Category: <%= @category.name %></h1>
+
+<% if logged_in? && current_user.admin? %>
+  <div style="text-align: center; margin-top: 2rem">
+    <%= link_to "Edit Category name", edit_category_path(@category) %>
+  </div>
+<% end %>
+
+<div class="apple_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+
+<%= render 'articles/article' %>
+
+<div class="apple_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
